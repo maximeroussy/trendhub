@@ -1,4 +1,7 @@
 package com.maximeroussy.trendhub.presentation.trending
 
-class TrendingViewModel {
+import androidx.lifecycle.ViewModel
+import javax.inject.Inject
+
+class TrendingViewModel @Inject constructor() : ViewModel() {
 }
