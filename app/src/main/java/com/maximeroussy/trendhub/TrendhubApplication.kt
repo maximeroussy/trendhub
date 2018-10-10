@@ -4,6 +4,7 @@ import android.app.Application
 import com.maximeroussy.trendhub.dependencyinjection.ApplicationComponent
 import com.maximeroussy.trendhub.dependencyinjection.ApplicationModule
 import com.maximeroussy.trendhub.dependencyinjection.DaggerApplicationComponent
+import io.wax911.emojify.EmojiManager
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
@@ -19,6 +20,7 @@ class TrendhubApplication : Application() {
     component = DaggerApplicationComponent.builder()
         .applicationModule(ApplicationModule(this))
         .build()
+    EmojiManager.initEmojiData(applicationContext)
   }
 
   companion object {
