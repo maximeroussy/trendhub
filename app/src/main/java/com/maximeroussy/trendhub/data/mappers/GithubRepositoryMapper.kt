@@ -16,7 +16,7 @@ class GithubRepositoryMapper @Inject constructor() {
         githubRepositoryResponse.name,
         githubRepositoryResponse.fullName,
         EmojiUtils.emojify(githubRepositoryResponse.description) ?: "",
-        githubRepositoryResponse.language ?: "~Unknown",
+        githubRepositoryResponse.language ?: "",
         githubRepositoryResponse.owner.login,
         githubRepositoryResponse.stargazersCount,
         githubRepositoryResponse.forksCount
