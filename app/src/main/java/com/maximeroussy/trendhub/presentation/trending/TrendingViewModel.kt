@@ -27,6 +27,10 @@ class TrendingViewModel @Inject constructor(
   val getRepositoryFetchError: LiveData<Any>
     get() = repositoryFetchError
 
+  init {
+    fetchAndroidTrendingRepositories()
+  }
+
   fun fetchAndroidTrendingRepositories() {
     getAndroidTrendingRepositories.execute()
         .subscribe({ result ->

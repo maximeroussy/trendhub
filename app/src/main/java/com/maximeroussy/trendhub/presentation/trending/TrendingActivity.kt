@@ -34,7 +34,6 @@ class TrendingActivity : BaseActivity() {
     setupToolbar()
     setupRecyclerView()
     setupObservers()
-    viewModel.fetchAndroidTrendingRepositories()
   }
 
   private fun setupToolbar() {
