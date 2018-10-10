@@ -21,7 +21,7 @@ class DataRepositoryImpl @Inject constructor(
 
   override fun getAndroidTrendingRepositories(): Single<List<GithubRepository>> {
     return githubApi.getAndroidTrending()
-        .map { githubRepositoryMapper.map(it) }
+        .map { response -> response.items.map { githubRepositoryMapper.map(it) } }
   }
 
   override fun getRepositoryDetail(owner: String, repoName: String): Single<GithubRepositoryDetail> {

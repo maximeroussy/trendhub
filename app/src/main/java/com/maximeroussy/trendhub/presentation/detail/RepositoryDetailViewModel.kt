@@ -17,8 +17,8 @@ import javax.inject.Inject
 
 class RepositoryDetailViewModel @Inject constructor(
     private val getGithubRepositoryDetails: GetGithubRepositoryDetails,
-    private val getGithubRepositoryReadme: GetGithubRepositoryReadme,
-    private val getGithubRepositoryContents: GetGithubRepositoryContents
+    private val getGithubRepositoryContents: GetGithubRepositoryContents,
+    private val getGithubRepositoryReadme: GetGithubRepositoryReadme
 ) : ViewModel() {
 
   private val disposables = CompositeDisposable()
@@ -41,8 +41,8 @@ class RepositoryDetailViewModel @Inject constructor(
 
   fun fetchData(githubRepository: GithubRepository) {
     loadRepositoryDetails(githubRepository)
-    loadRepositoryReadme(githubRepository)
     loadRepositoryContents(githubRepository)
+    loadRepositoryReadme(githubRepository)
   }
 
   private fun loadRepositoryDetails(githubRepository: GithubRepository) {
@@ -51,15 +51,15 @@ class RepositoryDetailViewModel @Inject constructor(
         .addTo(disposables)
   }
 
-  private fun loadRepositoryReadme(githubRepository: GithubRepository) {
-    getGithubRepositoryReadme.execute(githubRepository)
-        .subscribe({ result -> repositoryReadme.value = result }, { repositoryLoadingError.call() })
-        .addTo(disposables)
-  }
-
   private fun loadRepositoryContents(githubRepository: GithubRepository) {
     getGithubRepositoryContents.execute(githubRepository)
         .subscribe({ result -> repositoryContents.value = result }, { repositoryLoadingError.call() })
+        .addTo(disposables)
+  }
+
+  private fun loadRepositoryReadme(githubRepository: GithubRepository) {
+    getGithubRepositoryReadme.execute(githubRepository)
+        .subscribe({ result -> repositoryReadme.value = result }, { repositoryLoadingError.call() })
         .addTo(disposables)
   }
 

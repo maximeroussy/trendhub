@@ -13,13 +13,12 @@ class GithubApi @Inject constructor(
 ) {
 
   private var nextPageIndex = 0
-  private val constructedQuery = "topic:android"
 
   fun getAndroidTrending(): Single<GithubRepositorySearchResponse> {
     return if (nextPageIndex == -1) {
       Single.just(GithubRepositorySearchResponse(0, ArrayList()))
     } else {
-      githubEndpoint.getRepositories(constructedQuery, nextPageIndex)
+      githubEndpoint.getRepositories(QUERY, nextPageIndex)
           .doOnSuccess { nextPageIndex = githubHeaderParser.getNextPage(it.headers()) }
           .flatMap { mapRetrofitResponse(it) }
     }
@@ -46,5 +45,9 @@ class GithubApi @Inject constructor(
     } else {
       Single.error(Throwable(response.errorBody().toString()))
     }
+  }
+
+  companion object {
+    internal const val QUERY = "topic:android"
   }
 }

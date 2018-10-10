@@ -1,5 +1,7 @@
 ![Logo](logo.png)
 
+![demo-1](android-demo-1.gif)![demo-2](android-demo-2.gif)
+
 ## Assumptions & Decisions
 
 + For this simple demo project I'm using the Github API v3 as an unauthenticated user. This saves a lot of work with authentication which is I believe not important or relevant to the task. The main downside is that github limits their api usage when a user isn't authenticated. During heavy use and testing, it's possible to go over those limits and have to wait until they reset (I rarely had this happen for this project). I implemented caching for the calls with OkHttp which made a huge improvement.
@@ -11,6 +13,8 @@
 + A Github repository's data is massive. Building a fully featured detail view for a repository (mimicking the website) would be a significant undertaking with so many API calls (totaling the number of contributors, commits, branches, pull requests, issues, etc.) that the rate limits might not handle viewing many repositories one after another. I decided to interpret the "simple" part of the requirement in my own way and built a layout that showcases some of the main information for any github repository. I've kept it to 3 api calls, one for the repository details, one for the source directory contents and one for the readme in html form. I was able to design and build a nice looking screen with these api responses. The readme is actually displayed using a webview to load the html from the api call. I felt like it would be too long to set things up to handle the markdown.
 
 ## Design & Structure
+
+The app's architecture might be slightly overkill for the size of the this project and the requirements but I felt it would help to improve readability, reusability and scalability.
 
 I've went with a typical app structure for the project:
 + **presentation:** Contains all the view related code and logic including activities, adapters and viewmodels.
@@ -25,10 +29,16 @@ I used the MVVM pattern for the app using architecture components (ViewModel and
 
 ## Testing
 
+The whole project is built from the ground up with dependency injection using Dagger2. This makes every class testable by design with the ability to mock all dependencies and provide custom behavior to isolate the **subject under test**.
 
+The project contains several unit tests, but test coverage is lacking. No android ui/integration tests were written.
+
+Testing is done with JUnit, Mockito, Mockito-Kotlin and Architecture Components Testing libraries to facilitate assertion, mocking and stubbing.
 
 ## Future Considerations
 
 + **Implementing more specific and detailed error handling and messaging for users:** I've simply implemented a catchall that shows generic error dialogs without any context on the cause of any issues for the sake of this project.
+
++ **More tests:** This project would need more unit test coverage as well as android ui/integration tests. A good rule of thumb is usually to have tests written for all code being added in a pull request when possible.
 
 + **Keep designing and implementing more of the repository detail page:** Much more data could be added to the detail page to bring it closer to or on par with what you see on the website, including navigating to other sections as well. I had intended to implement more of but had to stop here for the time being.

@@ -7,10 +7,6 @@ import io.wax911.emojify.EmojiUtils
 import javax.inject.Inject
 
 class GithubRepositoryMapper @Inject constructor() {
-  fun map(githubRepositorySearchResponse: GithubRepositorySearchResponse): List<GithubRepository> {
-    return githubRepositorySearchResponse.items.map { map(it) }
-  }
-
   fun map(githubRepositoryResponse: GithubRepositoryResponse): GithubRepository {
     return GithubRepository(
         githubRepositoryResponse.name,
