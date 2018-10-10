@@ -12,8 +12,8 @@ class DataRepositoryImpl @Inject constructor(
     private val githubRepositoryMapper: GithubRepositoryMapper
 ) : DataRepository {
 
-  override fun getAndroidTrendingRepositories(date: String): Single<List<GithubRepository>> {
-    return githubApi.getAndroidTrending(date)
+  override fun getAndroidTrendingRepositories(): Single<List<GithubRepository>> {
+    return githubApi.getAndroidTrending()
         .map { githubRepositoryMapper.map(it) }
   }
 }

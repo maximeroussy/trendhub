@@ -29,8 +29,8 @@ class TrendingViewModel @Inject constructor(
 
   fun fetchAndroidTrendingRepositories() {
     getAndroidTrendingRepositories.execute()
-        .subscribe({
-          result -> repositoryResults.value = result
+        .subscribe({ result ->
+          repositoryResults.value = result
           isEmptyList.set(result.isEmpty())
         }, { repositoryFetchError.call() })
         .addTo(disposables)

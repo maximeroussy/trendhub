@@ -11,12 +11,7 @@ import javax.inject.Inject
 
 class GetAndroidTrendingRepositories @Inject constructor(private val dataRepository: DataRepository) {
   fun execute(): Single<List<GithubRepository>> {
-    val calendar = Calendar.getInstance()
-    calendar.add(Calendar.DATE, -30)
-    val dateFormat = SimpleDateFormat("yyyy-MM-dd")
-    val date = dateFormat.format(calendar.time)
-
-    return dataRepository.getAndroidTrendingRepositories(date)
+    return dataRepository.getAndroidTrendingRepositories()
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
   }
