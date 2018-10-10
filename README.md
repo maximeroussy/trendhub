@@ -1,6 +1,8 @@
 ![Logo](logo.png)
 
-![demo-1](android-demo-1.gif)![demo-2](android-demo-2.gif)
+<img src="./extras/android-demo-1.gif" width="400px"/><img src="./extras/android-demo-2.gif" width="400px"/>
+
+<img src="./extras/screen-1.png" width="200px"/><img src="./extras/screen-2.png" width="200px"/><img src="./extras/screen-3.png" width="200px"/><img src="./extras/screen-4.png" width="200px"/>
 
 ## Assumptions & Decisions
 
