@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.maximeroussy.trendhub.R
-import com.maximeroussy.trendhub.domain.models.GithubRepository
 import com.maximeroussy.trendhub.databinding.ViewRepositoryItemBinding
+import com.maximeroussy.trendhub.domain.models.GithubRepository
 import com.maximeroussy.trendhub.presentation.trending.TrendingRepositoryAdapter.RepositoryViewHolder
 
 class TrendingRepositoryAdapter(private val items: MutableList<GithubRepository>) : RecyclerView.Adapter<RepositoryViewHolder>() {

@@ -12,6 +12,7 @@ import com.maximeroussy.trendhub.databinding.ActivityTrendingBinding
 import com.maximeroussy.trendhub.dependencyinjection.Injector
 import com.maximeroussy.trendhub.presentation.BaseActivity
 import com.maximeroussy.trendhub.presentation.ViewModelFactory
+import com.maximeroussy.trendhub.presentation.detail.RepositoryDetailActivity
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.animators.ScaleInAnimator
 import kotlinx.android.synthetic.main.activity_trending.recycler_view
@@ -47,7 +48,7 @@ class TrendingActivity : BaseActivity() {
     val recyclerView = recycler_view
     val layoutManager = LinearLayoutManager(this)
     adapter = TrendingRepositoryAdapter(ArrayList())
-    adapter.setOnClickListener {  }
+    adapter.setOnClickListener { startActivity(RepositoryDetailActivity.newInstance(this, it)) }
     recyclerView.layoutManager = layoutManager
     recyclerView.itemAnimator = ScaleInAnimator()
     recyclerView.adapter = AlphaInAnimationAdapter(adapter)

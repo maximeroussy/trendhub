@@ -25,12 +25,6 @@ class GithubHeaderParser @Inject constructor() {
     return linkHeaderPart.substring(length - 5, length - 1)
   }
 
-  private fun getLink(linkHeaderPart: String): URL {
-    val length = linkHeaderPart.length
-    val firstCharIndex = linkHeaderPart.indexOf("<")
-    return URL(linkHeaderPart.substring(firstCharIndex + 1, length - 13))
-  }
-
   private fun getPageNumber(link: URL): Int {
     val pageNumberString = splitQuery(link.query)["page"]
     return if (!pageNumberString.isNullOrEmpty()) {
@@ -38,6 +32,12 @@ class GithubHeaderParser @Inject constructor() {
     } else {
       -1
     }
+  }
+
+  private fun getLink(linkHeaderPart: String): URL {
+    val length = linkHeaderPart.length
+    val firstCharIndex = linkHeaderPart.indexOf("<")
+    return URL(linkHeaderPart.substring(firstCharIndex + 1, length - 13))
   }
 
   private fun splitQuery(query: String): Map<String, String> {
@@ -53,7 +53,6 @@ class GithubHeaderParser @Inject constructor() {
       val value = it.substring(equalsSymbolPosition + 1, it.length)
       queryMap[name] = value
     }
-
     return queryMap
   }
 }

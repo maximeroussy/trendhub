@@ -2,5 +2,7 @@
   <dimen name="app_bar_height">180dp</dimen>
   <dimen name="repository_values_padding">12dp</dimen>
   <dimen name="repository_values_icon_padding">2.5dp</dimen>
+  <dimen name="repository_values_icon_top_margin">18dp</dimen>
+  <dimen name="repository_values_text_top_margin">19dp</dimen>
   <dimen name="repository_description_padding">4dp</dimen>
 </resources>

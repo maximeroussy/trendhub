@@ -5,4 +5,7 @@
   <color name="colorAccent">#8da300</color>
   <color name="white">#FFFFFF</color>
   <color name="status_bar_pre_m">#a3a3a3</color>
+
+  <color name="dark_gray">#696969</color>
+  <color name="file_name_blue">#1e6bcf</color>
 </resources>
