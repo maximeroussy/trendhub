@@ -41,6 +41,8 @@ Testing is done with JUnit, Mockito, Mockito-Kotlin and Architecture Components 
 
 + **Implementing more specific and detailed error handling and messaging for users:** I've simply implemented a catchall that shows generic error dialogs without any context on the cause of any issues for the sake of this project.
 
++ **Lack of state awareness:** I didn't design the viewmodels and ui to be state aware. It would be better if the user got feedback when things are loading in the form of a custom animation widget.
+
 + **More tests:** This project would need more unit test coverage as well as android ui/integration tests. A good rule of thumb is usually to have tests written for all code being added in a pull request when possible.
 
 + **Keep designing and implementing more of the repository detail page:** Much more data could be added to the detail page to bring it closer to or on par with what you see on the website, including navigating to other sections as well. I had intended to implement more of but had to stop here for the time being.
